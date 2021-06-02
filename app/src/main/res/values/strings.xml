@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Films App</string>
+    <string name="error">SOme Error</string>
+    <string name="retry">RETRY</string>
+    <string name="categories_films">Categories</string>
+    <string name="Films_name">title</string>
+    <string name="Films_ear">date</string>
+    <string name="Item_lists_TV_categories">Categories</string>
+    <string name="film">Film</string>
+    <string name="maindetailsfilmfragment">MainDetailsFilmFragment</string>
+</resources>

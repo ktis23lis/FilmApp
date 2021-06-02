@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="@dimen/Films_Item_CV_CornerRadius"
+    app:cardElevation="@dimen/Films_Item_CV_cardElevation"
+    android:layout_marginTop="@dimen/Films_Item_CV_margin"
+    android:layout_marginBottom="@dimen/Films_Item_CV_margin"
+    android:layout_marginStart="@dimen/Films_Item_CV_margin"
+    android:layout_marginEnd="@dimen/Films_Item_CV_margin"
+    android:layout_marginLeft="@dimen/Films_Item_CV_margin"
+    android:layout_marginRight="@dimen/Films_Item_CV_margin">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/Films_Item_IV_layout_width"
+            android:layout_height="@dimen/Films_Item_IV_layout_height"
+            android:layout_weight="1"
+            tools:srcCompat="@drawable/tv" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/films_NameTextView"
+                tools:text="@string/Films_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/dateReleaseTextView"
+                tools:text="@string/Films_ear"
+                android:layout_marginStart="@dimen/Films_Item_CV_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/Films_Item_CV_margin" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="Films_Item_CV_CornerRadius">15dp</dimen>
+    <dimen name="Films_Item_CV_cardElevation">3dp</dimen>
+    <dimen name="Films_Item_CV_margin">5dp</dimen>
+    <dimen name="Films_Item_IV_layout_width">150dp</dimen>
+    <dimen name="Films_Item_IV_layout_height">200dp</dimen>
+    <dimen name="Item_Lists_TV_categories_textSize">30dp</dimen>
+</resources>
