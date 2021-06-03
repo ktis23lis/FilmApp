@@ -7,10 +7,10 @@ interface Repository {
 
     fun  getFilm(executor : Executor, callback: (result : RepositoryResult<Film>) -> Unit)
     fun  getCategory(executor : Executor, callback: (result : RepositoryResult<List<Category>>) -> Unit)
-    fun  getPopular() : Array<Film>
-    fun  getNowPlaying() : Array<Film>
-    fun  getTopRated() : Array<Film>
-    fun  getUpcoming() : Array<Film>
+    fun  getPopular() : ArrayList<Film>
+    fun  getNowPlaying() : ArrayList<Film>
+    fun  getTopRated() : ArrayList<Film>
+    fun  getUpcoming() : ArrayList<Film>
 
 
 
