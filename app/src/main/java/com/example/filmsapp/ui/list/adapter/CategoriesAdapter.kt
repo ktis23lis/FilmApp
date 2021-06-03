@@ -12,7 +12,7 @@ class CategoriesAdapter(
         private val itemClicked: ItemClicked? = null) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val repository: Repository = RepositoryImp()
+    private val repository: Repository = RepositoryApiImpl()
     private val data = mutableListOf<Category>()
 
     fun setData(dataToSet: List<Category>) {

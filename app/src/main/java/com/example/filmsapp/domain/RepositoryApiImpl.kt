@@ -16,6 +16,9 @@ class RepositoryApiImpl: Repository {
     private val gson = Gson()
     private var filmsData = ArrayList<Film>()
 
+
+
+
     override fun getCategory(executor: Executor, callback: (result: RepositoryResult<List<Category>>) -> Unit) {
 
         val result = listOf<Category>(
@@ -93,10 +96,12 @@ class RepositoryApiImpl: Repository {
                     filmOverview, filmRating, filmDate))
                 }
                 mainThreadHandler.post {
+                    SuccessApi(filmsData)
                 }
             }
         } catch (e: Exception) {
             mainThreadHandler.post {
+
             }
         } finally {
             connection.disconnect()
@@ -125,15 +130,19 @@ class RepositoryApiImpl: Repository {
                     val filmRating = i.rating
                     val filmDate = i.date
 
-                    filmsData = arrayListOf(Film(Category("a", Direction.POPULAR), R.drawable.tv, filmName,
+                    filmsData = arrayListOf(Film(Category("b", Direction.NOW_PLAYING), R.drawable.tv, filmName,
                             filmOverview, filmRating, filmDate))
                 }
                 mainThreadHandler.post {
+                    SuccessApi(filmsData)
+
                 }
             }
         } catch (e: Exception) {
             mainThreadHandler.post {
+
             }
+
         } finally {
             connection.disconnect()
         }
@@ -161,14 +170,16 @@ class RepositoryApiImpl: Repository {
                     val filmRating = i.rating
                     val filmDate = i.date
 
-                    filmsData = arrayListOf(Film(Category("a", Direction.POPULAR), R.drawable.tv, filmName,
+                    filmsData = arrayListOf(Film(Category("c", Direction.TOP_RATED), R.drawable.tv, filmName,
                             filmOverview, filmRating, filmDate))
                 }
                 mainThreadHandler.post {
+                    SuccessApi(filmsData)
                 }
             }
         } catch (e: Exception) {
             mainThreadHandler.post {
+
             }
         } finally {
             connection.disconnect()
@@ -197,14 +208,16 @@ class RepositoryApiImpl: Repository {
                     val filmRating = i.rating
                     val filmDate = i.date
 
-                    filmsData = arrayListOf(Film(Category("a", Direction.POPULAR), R.drawable.tv, filmName,
+                    filmsData = arrayListOf(Film(Category("в", Direction.UPCOMING), R.drawable.tv, filmName,
                             filmOverview, filmRating, filmDate))
                 }
                 mainThreadHandler.post {
+                    SuccessApi(filmsData)
                 }
             }
         } catch (e: Exception) {
             mainThreadHandler.post {
+
             }
         } finally {
             connection.disconnect()
@@ -212,3 +225,7 @@ class RepositoryApiImpl: Repository {
         return filmsData
     }
 }
+
+sealed class RepositoryResultApi<T>
+data class SuccessApi<Film>(val value: ArrayList<Film>) : RepositoryResultApi<Film>()
+data class ErrorApi<T>(val value: Exception) : RepositoryResultApi<T>()
