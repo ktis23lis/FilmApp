@@ -49,7 +49,7 @@ class  FilmViewModel(
 //                            film.overview,
 //                            film.rating,
 //                            film.date,
-
+//
 //                        )
                     _errorLiveData.value = null
                 }
