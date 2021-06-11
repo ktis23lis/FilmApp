@@ -42,7 +42,7 @@ class CategoriesAdapter(
                         is SuccessApi -> {
                             val arr = it.value
                             for (i in arr) {
-                                filmsData.add(i as Film)
+                                filmsData.add(i )
                             }
                         }
                         is ErrorApi -> {
@@ -58,7 +58,7 @@ class CategoriesAdapter(
                         is SuccessApi ->{
                             val arr = it.value
                             for (i in arr){
-                                filmsData.add(i as Film)
+                                filmsData.add(i )
                             }
                         }
                         is ErrorApi -> {
@@ -74,7 +74,7 @@ class CategoriesAdapter(
                         is SuccessApi ->{
                             val arr = it.value
                             for (i in arr){
-                                filmsData.add(i as Film)
+                                filmsData.add(i)
                             }
                         }
                         is ErrorApi -> {
@@ -90,7 +90,7 @@ class CategoriesAdapter(
                         is SuccessApi ->{
                             val arr = it.value
                             for (i in arr){
-                                filmsData.add(i as Film)
+                                filmsData.add(i )
                             }
 
                         }
