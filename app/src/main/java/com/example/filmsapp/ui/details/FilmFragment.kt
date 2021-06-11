@@ -15,6 +15,7 @@ import com.example.filmsapp.databinding.FragmentDetailsBinding
 import com.example.filmsapp.di.App
 import com.example.filmsapp.domain.Film
 import com.example.filmsapp.domain.Repository
+import com.example.filmsapp.domain.RepositoryApiImpl
 import javax.inject.Inject
 
 class FilmFragment : Fragment(R.layout.fragment_details) {
