@@ -29,7 +29,7 @@ class ListViewModel (
             repository.getCategory (executors){
                 when (it) {
                     is Success -> {
-                       val result : List<Category> =  it.value
+                        val result : List<Category> =  it.value
                         _categoryLiveData.value = result
 
                     }
