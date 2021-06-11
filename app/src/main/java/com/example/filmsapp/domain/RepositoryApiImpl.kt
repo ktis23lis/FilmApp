@@ -97,15 +97,13 @@ class RepositoryApiImpl: Repository {
                 }
             } catch (e: Exception) {
                 mainThreadHandler.post {
-                    callback.invoke(ErrorApi(e))
+                    e.printStackTrace()
 
                 }
             } finally {
                 connection.disconnect()
             }
         }
-
-
     }
 
     override fun getNowPlaying(executor: Executor, callback: (result: RepositoryResultApi<List<Film>>) -> Unit) {
@@ -141,7 +139,7 @@ class RepositoryApiImpl: Repository {
                 }
             } catch (e: Exception) {
                 mainThreadHandler.post {
-                    callback.invoke(ErrorApi(e))
+                    e.printStackTrace()
                 }
 
             } finally {
@@ -183,7 +181,7 @@ class RepositoryApiImpl: Repository {
                 }
             } catch (e: Exception) {
                 mainThreadHandler.post {
-                    callback.invoke(ErrorApi(e))
+                    e.printStackTrace()
                 }
             } finally {
                 connection.disconnect()
