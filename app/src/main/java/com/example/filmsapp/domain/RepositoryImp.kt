@@ -2,17 +2,13 @@ package com.example.filmsapp.domain
 
 import android.os.Handler
 import android.os.Looper
-import com.example.filmsapp.R
-import java.lang.RuntimeException
-import java.util.concurrent.Executor
 import kotlin.random.Random
 
 
-class RepositoryImp
-//    : Repository {
+class RepositoryImp  {
 
-//
-//    private val mainThreadHandler = Handler(Looper.getMainLooper())
+
+    private val mainThreadHandler = Handler(Looper.getMainLooper())
 //
 //    override fun getCategory(
 //            executor: Executor,
@@ -42,7 +38,7 @@ class RepositoryImp
 //            }
 //        }
 //    }
-////
+//
 //    override fun getFilm(
 //            executor: Executor,
 //            callback: (result: RepositoryResult<Film>) -> Unit
@@ -66,12 +62,12 @@ class RepositoryImp
 //                )
 //            }
 //        }
-//        else {
-//                mainThreadHandler.post {
-//                    callback(
-//                        Error<Film>(RuntimeException(" It is not film!"))
-//                    )
-//                }
+////        else {
+////                mainThreadHandler.post {
+////                    callback(
+////                        Error<Film>(RuntimeException(" It is not film!"))
+////                    )
+////                }
 //    }
 
 //
@@ -84,13 +80,12 @@ class RepositoryImp
 //
 //override fun getUpcoming() = getHardUpcoming()
 //
+//
 
-
-//}
+}
 
 
 sealed class RepositoryResult<T>
-data class Success<T>(val value:T) : RepositoryResult<T>()
+data class Success<T>(val value: T) : RepositoryResult<T>()
 data class Error<T>(val value: Throwable) : RepositoryResult<T>()
-
 

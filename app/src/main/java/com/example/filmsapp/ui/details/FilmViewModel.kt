@@ -37,11 +37,12 @@ class  FilmViewModel(
                 is Success -> {
                     val film = it.value
                     _filmLiveData.value =
-                        FilmInfo(Category("a", Direction.TOP_RATED),
+                        FilmInfo(
+                        Category("a", Direction.UPCOMING),
                         R.drawable.emoticon,
                        "A",
                         "a",
-                        2,
+                        2.3f,
                         "a")
 //                        FilmInfo(film.category,
 //                            film.image,
@@ -69,10 +70,11 @@ class  FilmViewModel(
 
     data class FilmInfo(
         val filmCAtefory : Category,
-        @DrawableRes val filmImage: Int,
-        val filmTitle: String,
-        val filmOverview: String,
-        val filmRating: Int,
-        val filmDate: String,
+        val image: Int,
+        val title: String,
+        val overview: String,
+        val rating: Float,
+        val date: String
+
     )
 }

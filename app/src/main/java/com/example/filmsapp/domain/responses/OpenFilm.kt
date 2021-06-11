@@ -23,7 +23,7 @@ data class OpenFilm(
         @SerializedName("release_date")
         val date: String,
         @SerializedName("vote_average")
-        val rating: Int
+        val rating: Float
 )
 
 
