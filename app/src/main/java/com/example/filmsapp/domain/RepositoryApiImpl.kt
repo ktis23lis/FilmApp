@@ -27,6 +27,33 @@ class RepositoryApiImpl: Repository {
         callback.invoke(Success(result))
     }
 
+
+//    override fun getFilm(
+//            executor: Executor,
+//            callback: (result: RepositoryResult<Film>) -> Unit
+//    ) {
+//        executor.execute {
+//            Thread.sleep(250)
+//
+//
+//            val film = Film(
+//                    Category("a",(Direction.POPULAR)),
+//                    R.drawable.tv,
+//                    "title",
+//                    "overview",
+//                    2.3f,
+//                    "2020"
+//            )
+//            mainThreadHandler.post {
+//                callback(
+//                        Success(film)
+//                )
+//            }
+//        }
+//
+//    }
+
+
     override fun getFilm(executor: Executor, callback: (result: RepositoryResult<Film>) -> Unit) {
         executor.execute {
             val url =

@@ -16,8 +16,6 @@ class  FilmViewModel(
         private val repository: Repository
 
 
-//    private val resourceProvider: ResourceProvider,
-//    private val repository: RepositoryImp
 ) : ViewModel() {
 
     private val executors = Executors.newSingleThreadExecutor()
@@ -44,14 +42,6 @@ class  FilmViewModel(
                         "a",
                         2.3f,
                         "a")
-//                        FilmInfo(film.category,
-//                            film.image,
-//                            film.title,
-//                            film.overview,
-//                            film.rating,
-//                            film.date,
-//
-//                        )
                     _errorLiveData.value = null
                 }
                 is Error -> {

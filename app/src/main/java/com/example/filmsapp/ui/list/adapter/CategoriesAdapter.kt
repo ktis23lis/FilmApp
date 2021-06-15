@@ -1,4 +1,5 @@
 package com.example.filmsapp.ui.list.adapter
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,10 @@ class CategoriesAdapter(
     private val executors = Executors.newSingleThreadExecutor()
     private val repository: Repository = RepositoryApiImpl()
     private val data = mutableListOf<Category>()
+    private val FIRST_VALUE_IN_ARR =0
+    private val SECOND_VALUE_IN_ARR =1
+    private val TRITIUM_VALUE_IN_ARR =2
+    private val FOURTH_VALUE_IN_ARR =3
 
     fun setData(dataToSet: List<Category>) {
         data.apply {
@@ -34,13 +39,13 @@ class CategoriesAdapter(
         (holder as? CategoriesViewHolder)?.let { categoryHolder ->
             categoryHolder.categories.text = category.category.toString()
             val filmsData = ArrayList<Film>()
-            if (position == 0) {
+            if (position == FIRST_VALUE_IN_ARR) {
                 repository.getPopular(executor = executors, callback = {
                     when (it) {
                         is SuccessApi -> {
                             val arr = it.value
                             for (i in arr) {
-                                filmsData.add(i )
+                                filmsData.add(Film(Category("a", Direction.POPULAR), R.drawable.laptop, i.title, i.overview, i.rating, i.date ))
                             }
                         }
                         is ErrorApi -> {
@@ -49,13 +54,13 @@ class CategoriesAdapter(
                     }
                 })
             }
-            if (position == 1) {
+            if (position == SECOND_VALUE_IN_ARR) {
                 repository.getNowPlaying(executor = executors, callback = {
                     when(it){
                         is SuccessApi ->{
                             val arr = it.value
                             for (i in arr){
-                                filmsData.add(i )
+                                filmsData.add(Film(Category("a", Direction.POPULAR), R.drawable.laptop, i.title, i.overview, i.rating, i.date ))
                             }
                         }
                         is ErrorApi -> {
@@ -64,13 +69,13 @@ class CategoriesAdapter(
                     }
                 })
             }
-            if (position == 2) {
+            if (position == TRITIUM_VALUE_IN_ARR) {
                 repository.getTopRated(executor = executors, callback = {
                     when(it){
                         is SuccessApi ->{
                             val arr = it.value
                             for (i in arr){
-                                filmsData.add(i)
+                                filmsData.add(Film(Category("a", Direction.POPULAR), R.drawable.laptop, i.title, i.overview, i.rating, i.date ))
                             }
                         }
                         is ErrorApi -> {
@@ -79,13 +84,13 @@ class CategoriesAdapter(
                     }
                 })
             }
-            if (position == 3) {
+            if (position == FOURTH_VALUE_IN_ARR) {
                  repository.getUpcoming(executor = executors, callback = {
                     when(it){
                         is SuccessApi ->{
                             val arr = it.value
                             for (i in arr){
-                                filmsData.add(i )
+                                filmsData.add(Film(Category("a", Direction.POPULAR), R.drawable.laptop, i.title, i.overview, i.rating, i.date ))
                             }
                         }
                         is ErrorApi -> {
@@ -106,4 +111,8 @@ class CategoriesAdapter(
         val categories: TextView = itemView.findViewById(R.id.categoriesTextView)
         val listFilms: RecyclerView = itemView.findViewById(R.id.filmsList)
     }
+
+
+
+
 }
