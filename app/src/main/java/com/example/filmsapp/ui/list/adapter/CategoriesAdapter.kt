@@ -6,13 +6,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.filmsapp.R
 import com.example.filmsapp.domain.*
+import java.util.concurrent.Executors
+import kotlin.Error
 
 
 class CategoriesAdapter(
         private val itemClicked: ItemClicked? = null) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private val repository: Repository = RepositoryImp()
+    private val executors = Executors.newSingleThreadExecutor()
+    private val repository: Repository = RepositoryApiImpl()
     private val data = mutableListOf<Category>()
 
     fun setData(dataToSet: List<Category>) {
@@ -33,33 +35,68 @@ class CategoriesAdapter(
             categoryHolder.categories.text = category.category.toString()
             val filmsData = ArrayList<Film>()
             if (position == 0) {
-                val myArray = repository.getPopular()
-                for (i in myArray) {
-                    filmsData.add(i)
-                }
+                repository.getPopular(executor = executors, callback = {
+                    when (it) {
+                        is SuccessApi -> {
+                            val arr = it.value
+                            for (i in arr) {
+                                filmsData.add(i )
+                            }
+                        }
+                        is ErrorApi -> {
+                            val e =it.value
+                        }
+                    }
+                })
             }
             if (position == 1) {
-                val myArray = repository.getNowPlaying()
-                for (i in myArray) {
-                    filmsData.add(i)
-                }
+                repository.getNowPlaying(executor = executors, callback = {
+                    when(it){
+                        is SuccessApi ->{
+                            val arr = it.value
+                            for (i in arr){
+                                filmsData.add(i )
+                            }
+                        }
+                        is ErrorApi -> {
+                            val e =it.value
+                        }
+                    }
+                })
             }
             if (position == 2) {
-                val myArray = repository.getTopRated()
-                for (i in myArray) {
-                    filmsData.add(i)
-                }
+                repository.getTopRated(executor = executors, callback = {
+                    when(it){
+                        is SuccessApi ->{
+                            val arr = it.value
+                            for (i in arr){
+                                filmsData.add(i)
+                            }
+                        }
+                        is ErrorApi -> {
+                            val e =it.value
+                        }
+                    }
+                })
             }
             if (position == 3) {
-                val myArray = repository.getUpcoming()
-                for (i in myArray) {
-                    filmsData.add(i)
-                }
+                 repository.getUpcoming(executor = executors, callback = {
+                    when(it){
+                        is SuccessApi ->{
+                            val arr = it.value
+                            for (i in arr){
+                                filmsData.add(i )
+                            }
+                        }
+                        is ErrorApi -> {
+                            val e =it.value
+                        }
+                    }
+                })
             }
             val filmAdapter = FilmAdapter(itemClicked, filmsData)
             categoryHolder.listFilms.adapter = filmAdapter
             filmAdapter.notifyDataSetChanged()
-
         }
     }
 
@@ -68,6 +105,5 @@ class CategoriesAdapter(
     inner class CategoriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val categories: TextView = itemView.findViewById(R.id.categoriesTextView)
         val listFilms: RecyclerView = itemView.findViewById(R.id.filmsList)
-
     }
 }
