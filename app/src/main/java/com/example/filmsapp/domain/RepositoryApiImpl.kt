@@ -17,8 +17,6 @@ class RepositoryApiImpl: Repository {
     private var filmsData = ArrayList<Film>()
 
 
-
-
     override fun getCategory(executor: Executor, callback: (result: RepositoryResult<List<Category>>) -> Unit) {
         val result = listOf(
                 Category("a", (Direction.POPULAR)),
@@ -34,7 +32,6 @@ class RepositoryApiImpl: Repository {
             val url =
                     URL("https://api.themoviedb.org/3/movie/632357?api_key=1d8addf97a9886e6124b23d2897be981&language=en-US")
             val connection = url.openConnection() as HttpURLConnection
-
             try {
                 with(connection) {
                     requestMethod = "GET"
@@ -66,17 +63,15 @@ class RepositoryApiImpl: Repository {
         }
     }
 
-    override fun getPopular(executor: Executor, callback: (RepositoryResultApi<List<Film>>) -> Unit) {
+    override fun getPopular(executor: Executor, callback: (RepositoryResultApi<ArrayList<Film>>) -> Unit) {
         executor.execute {
             val url =
                     URL("https://api.themoviedb.org/3/movie/popular?api_key=1d8addf97a9886e6124b23d2897be981")
             val connection = url.openConnection() as HttpURLConnection
-
             try {
                 with(connection) {
                     requestMethod = "GET"
                     readTimeout = 30_000
-
                     val response = gson.fromJson(
                             inputStream.bufferedReader(),
                             OpenResult::class.java
@@ -87,7 +82,6 @@ class RepositoryApiImpl: Repository {
                         val filmOverview  = i.overview
                         val filmRating = i.rating
                         val filmDate = i.date
-
                         filmsData = arrayListOf(Film(Category("a", Direction.POPULAR), R.drawable.tv, filmName,
                                 filmOverview, filmRating, filmDate))
                     }
@@ -98,7 +92,6 @@ class RepositoryApiImpl: Repository {
             } catch (e: Exception) {
                 mainThreadHandler.post {
                     e.printStackTrace()
-
                 }
             } finally {
                 connection.disconnect()
@@ -106,18 +99,15 @@ class RepositoryApiImpl: Repository {
         }
     }
 
-    override fun getNowPlaying(executor: Executor, callback: (result: RepositoryResultApi<List<Film>>) -> Unit) {
+    override fun getNowPlaying(executor: Executor, callback: (result: RepositoryResultApi<ArrayList<Film>>) -> Unit) {
         executor.execute {
-
             val url =
                     URL("https://api.themoviedb.org/3/movie/now_playing?api_key=1d8addf97a9886e6124b23d2897be981")
             val connection = url.openConnection() as HttpURLConnection
-
             try {
                 with(connection) {
                     requestMethod = "GET"
                     readTimeout = 30_000
-
                     val response = gson.fromJson(
                             inputStream.bufferedReader(),
                             OpenResult::class.java
@@ -128,13 +118,11 @@ class RepositoryApiImpl: Repository {
                         val filmOverview  = i.overview
                         val filmRating = i.rating
                         val filmDate = i.date
-
                         filmsData = arrayListOf(Film(Category("b", Direction.NOW_PLAYING), R.drawable.tv, filmName,
                                 filmOverview, filmRating, filmDate))
                     }
                     mainThreadHandler.post {
                         callback.invoke(SuccessApi(filmsData))
-
                     }
                 }
             } catch (e: Exception) {
@@ -145,17 +133,14 @@ class RepositoryApiImpl: Repository {
             } finally {
                 connection.disconnect()
             }
-
         }
-
     }
 
-    override fun getTopRated(executor: Executor, callback: (result: RepositoryResultApi<List<Film>>) -> Unit) {
+    override fun getTopRated(executor: Executor, callback: (result: RepositoryResultApi<ArrayList<Film>>) -> Unit) {
         executor.execute {
             val url =
                     URL("https://api.themoviedb.org/3/movie/top_rated?api_key=1d8addf97a9886e6124b23d2897be981")
             val connection = url.openConnection() as HttpURLConnection
-
             try {
                 with(connection) {
                     requestMethod = "GET"
@@ -186,13 +171,10 @@ class RepositoryApiImpl: Repository {
             } finally {
                 connection.disconnect()
             }
-
         }
-
-
     }
 
-    override fun getUpcoming(executor: Executor, callback: (result: RepositoryResultApi<List<Film>>) -> Unit) {
+    override fun getUpcoming(executor: Executor, callback: (result: RepositoryResultApi<ArrayList<Film>>) -> Unit) {
         executor.execute {
             val url =
                     URL("https://api.themoviedb.org/3/movie/upcoming?api_key=1d8addf97a9886e6124b23d2897be981")
@@ -202,7 +184,6 @@ class RepositoryApiImpl: Repository {
                 with(connection) {
                     requestMethod = "GET"
                     readTimeout = 30_000
-
                     val response = gson.fromJson(
                             inputStream.bufferedReader(),
                             OpenResult::class.java
@@ -213,7 +194,6 @@ class RepositoryApiImpl: Repository {
                         val filmOverview  = i.overview
                         val filmRating = i.rating
                         val filmDate = i.date
-
                         filmsData = arrayListOf(Film(Category("a", Direction.POPULAR), R.drawable.tv, filmName,
                                 filmOverview, filmRating, filmDate))
                     }
@@ -228,11 +208,8 @@ class RepositoryApiImpl: Repository {
             } finally {
                 connection.disconnect()
             }
-
-
         }
         }
-
 }
 
 sealed class RepositoryResultApi<T>

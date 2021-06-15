@@ -13,9 +13,7 @@ import kotlin.Error
 class CategoriesAdapter(
         private val itemClicked: ItemClicked? = null) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
     private val executors = Executors.newSingleThreadExecutor()
-
     private val repository: Repository = RepositoryApiImpl()
     private val data = mutableListOf<Category>()
 
@@ -47,7 +45,6 @@ class CategoriesAdapter(
                         }
                         is ErrorApi -> {
                             val e =it.value
-
                         }
                     }
                 })
@@ -63,7 +60,6 @@ class CategoriesAdapter(
                         }
                         is ErrorApi -> {
                             val e =it.value
-
                         }
                     }
                 })
@@ -79,7 +75,6 @@ class CategoriesAdapter(
                         }
                         is ErrorApi -> {
                             val e =it.value
-
                         }
                     }
                 })
@@ -92,11 +87,9 @@ class CategoriesAdapter(
                             for (i in arr){
                                 filmsData.add(i )
                             }
-
                         }
                         is ErrorApi -> {
                             val e =it.value
-
                         }
                     }
                 })
@@ -104,7 +97,6 @@ class CategoriesAdapter(
             val filmAdapter = FilmAdapter(itemClicked, filmsData)
             categoryHolder.listFilms.adapter = filmAdapter
             filmAdapter.notifyDataSetChanged()
-
         }
     }
 
@@ -113,6 +105,5 @@ class CategoriesAdapter(
     inner class CategoriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val categories: TextView = itemView.findViewById(R.id.categoriesTextView)
         val listFilms: RecyclerView = itemView.findViewById(R.id.filmsList)
-
     }
 }
