@@ -87,10 +87,10 @@ class FilmFragment : Fragment(R.layout.fragment_details) {
                 with(viewBinding) {
                     retry.visibility = View.GONE
 
-                    image.apply {
-                        visibility = View.VISIBLE
-                        image.setImageResource(film.image)
-                    }
+//                    image.apply {
+//                        visibility = View.VISIBLE
+//                        image.setImageResource(film.image)
+//                    }
                     name.apply {
                         visibility = View.VISIBLE
                         name.text = film.title

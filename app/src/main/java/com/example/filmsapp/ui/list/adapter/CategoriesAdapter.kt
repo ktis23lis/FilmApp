@@ -21,6 +21,7 @@ class CategoriesAdapter(
     private val SECOND_VALUE_IN_ARR =1
     private val TRITIUM_VALUE_IN_ARR =2
     private val FOURTH_VALUE_IN_ARR =3
+    private val FIRST_API  = "https://image.tmdb.org/t/p/w500/bShgiEQoPnWdw4LBrYT5u18JF34.jpg"
 
     fun setData(dataToSet: List<Category>) {
         data.apply {
@@ -45,7 +46,7 @@ class CategoriesAdapter(
                         is SuccessApi -> {
                             val arr = it.value
                             for (i in arr) {
-                                filmsData.add(Film(Category("a", Direction.POPULAR), R.drawable.laptop, i.title, i.overview, i.rating, i.date ))
+                                filmsData.add(Film(Category("a", Direction.POPULAR), "R.drawable.laptop", i.title, i.overview, i.rating, i.date ))
                             }
                         }
                         is ErrorApi -> {
@@ -60,7 +61,7 @@ class CategoriesAdapter(
                         is SuccessApi ->{
                             val arr = it.value
                             for (i in arr){
-                                filmsData.add(Film(Category("a", Direction.POPULAR), R.drawable.laptop, i.title, i.overview, i.rating, i.date ))
+                                filmsData.add(Film(Category("a", Direction.POPULAR), "R.drawable.laptop", i.title, i.overview, i.rating, i.date ))
                             }
                         }
                         is ErrorApi -> {
@@ -75,7 +76,7 @@ class CategoriesAdapter(
                         is SuccessApi ->{
                             val arr = it.value
                             for (i in arr){
-                                filmsData.add(Film(Category("a", Direction.POPULAR), R.drawable.laptop, i.title, i.overview, i.rating, i.date ))
+                                filmsData.add(Film(Category("a", Direction.POPULAR), "R.drawable.laptop", i.title, i.overview, i.rating, i.date ))
                             }
                         }
                         is ErrorApi -> {
@@ -90,7 +91,7 @@ class CategoriesAdapter(
                         is SuccessApi ->{
                             val arr = it.value
                             for (i in arr){
-                                filmsData.add(Film(Category("a", Direction.POPULAR), R.drawable.laptop, i.title, i.overview, i.rating, i.date ))
+                                filmsData.add(Film(Category("a", Direction.POPULAR), "R.drawable.laptop", i.title, i.overview, i.rating, i.date ))
                             }
                         }
                         is ErrorApi -> {

@@ -37,7 +37,7 @@ class  FilmViewModel(
                     _filmLiveData.value =
                         FilmInfo(
                         Category("a", Direction.UPCOMING),
-                        R.drawable.emoticon,
+                        "R.drawable.emoticon",
                        "A",
                         "a",
                         2.3f,
@@ -60,7 +60,7 @@ class  FilmViewModel(
 
     data class FilmInfo(
         val filmCAtefory : Category,
-        val image: Int,
+        val image: String,
         val title: String,
         val overview: String,
         val rating: Float,

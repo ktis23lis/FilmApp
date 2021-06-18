@@ -6,6 +6,9 @@ import com.example.filmsapp.R
 import com.example.filmsapp.domain.responses.OpenFilm
 import com.example.filmsapp.domain.responses.OpenResult
 import com.google.gson.Gson
+import com.squareup.picasso.Picasso
+import org.json.JSONArray
+import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
 import java.util.concurrent.Executor
@@ -15,6 +18,8 @@ class RepositoryApiImpl: Repository {
     private val mainThreadHandler = Handler(Looper.getMainLooper())
     private val gson = Gson()
     private var filmsData = ArrayList<Film>()
+
+
 
 
     override fun getCategory(executor: Executor, callback: (result: RepositoryResult<List<Category>>) -> Unit) {
@@ -70,7 +75,7 @@ class RepositoryApiImpl: Repository {
                     )
                     val film = Film(
                             Category("a", Direction.TOP_RATED),
-                            R.drawable.tv,
+                            response.image,
                             response.title,
                             response.overview,
                             response.rating,
@@ -105,11 +110,12 @@ class RepositoryApiImpl: Repository {
                     )
                     val array = response.results
                     for (i in array){
+                        val filmImage = i.image
                         val filmName = i.title
                         val filmOverview  = i.overview
                         val filmRating = i.rating
                         val filmDate = i.date
-                        filmsData = arrayListOf(Film(Category("a", Direction.POPULAR), R.drawable.tv, filmName,
+                        filmsData = arrayListOf(Film(Category("a", Direction.POPULAR), filmImage, filmName,
                                 filmOverview, filmRating, filmDate))
                     }
                     mainThreadHandler.post {
@@ -141,12 +147,13 @@ class RepositoryApiImpl: Repository {
                     )
                     val array = response.results
                     for (i in array){
+                        val filmImage = i.image
                         val filmName = i.title
                         val filmOverview  = i.overview
                         val filmRating = i.rating
                         val filmDate = i.date
-                        filmsData = arrayListOf(Film(Category("b", Direction.NOW_PLAYING), R.drawable.tv, filmName,
-                                filmOverview, filmRating, filmDate))
+                        filmsData = arrayListOf(Film(Category("a", Direction.POPULAR), filmImage, filmName,
+                            filmOverview, filmRating, filmDate))
                     }
                     mainThreadHandler.post {
                         callback.invoke(SuccessApi(filmsData))
@@ -179,13 +186,13 @@ class RepositoryApiImpl: Repository {
                     )
                     val array = response.results
                     for (i in array){
+                        val filmImage = i.image
                         val filmName = i.title
                         val filmOverview  = i.overview
                         val filmRating = i.rating
                         val filmDate = i.date
-
-                        filmsData = arrayListOf(Film(Category("c", Direction.TOP_RATED), R.drawable.tv, filmName,
-                                filmOverview, filmRating, filmDate))
+                        filmsData = arrayListOf(Film(Category("a", Direction.POPULAR), filmImage, filmName,
+                            filmOverview, filmRating, filmDate))
                     }
                     mainThreadHandler.post {
                         callback.invoke(SuccessApi(filmsData))
@@ -215,14 +222,16 @@ class RepositoryApiImpl: Repository {
                             inputStream.bufferedReader(),
                             OpenResult::class.java
                     )
+
                     val array = response.results
                     for (i in array){
+                        val filmImage = i.image
                         val filmName = i.title
                         val filmOverview  = i.overview
                         val filmRating = i.rating
                         val filmDate = i.date
-                        filmsData = arrayListOf(Film(Category("a", Direction.POPULAR), R.drawable.tv, filmName,
-                                filmOverview, filmRating, filmDate))
+                        filmsData = arrayListOf(Film(Category("a", Direction.POPULAR), filmImage, filmName,
+                            filmOverview, filmRating, filmDate))
                     }
                     mainThreadHandler.post {
                         callback.invoke(SuccessApi(filmsData))

@@ -15,7 +15,8 @@ import java.net.URL
 
 data class OpenFilm(
         val category: Category,
-        val image : Int,
+        @SerializedName("poster_path")
+        val image : String,
         @SerializedName("original_title")
         val title: String,
         @SerializedName("overview")
