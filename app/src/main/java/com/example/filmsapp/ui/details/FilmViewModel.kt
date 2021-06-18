@@ -16,8 +16,6 @@ class  FilmViewModel(
         private val repository: Repository
 
 
-//    private val resourceProvider: ResourceProvider,
-//    private val repository: RepositoryImp
 ) : ViewModel() {
 
     private val executors = Executors.newSingleThreadExecutor()
@@ -37,20 +35,13 @@ class  FilmViewModel(
                 is Success -> {
                     val film = it.value
                     _filmLiveData.value =
-                        FilmInfo(Category("a", Direction.TOP_RATED),
-                        R.drawable.emoticon,
+                        FilmInfo(
+                        Category("a", Direction.UPCOMING),
+                        "R.drawable.emoticon",
                        "A",
                         "a",
-                        2,
+                        2.3f,
                         "a")
-//                        FilmInfo(film.category,
-//                            film.image,
-//                            film.title,
-//                            film.overview,
-//                            film.rating,
-//                            film.date,
-
-//                        )
                     _errorLiveData.value = null
                 }
                 is Error -> {
@@ -69,10 +60,11 @@ class  FilmViewModel(
 
     data class FilmInfo(
         val filmCAtefory : Category,
-        @DrawableRes val filmImage: Int,
-        val filmTitle: String,
-        val filmOverview: String,
-        val filmRating: Int,
-        val filmDate: String,
+        val image: String,
+        val title: String,
+        val overview: String,
+        val rating: Float,
+        val date: String
+
     )
 }
