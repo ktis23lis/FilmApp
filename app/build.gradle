@@ -16,9 +16,11 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildFeatures {
         viewBinding true
@@ -52,10 +54,13 @@ dependencies {
     implementation 'androidx.fragment:fragment-ktx:1.4.0-alpha01'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
+    implementation 'com.android.support:multidex:1.0.3'
+
     implementation 'com.google.dagger:dagger:2.35.1'
     kapt 'com.google.dagger:dagger-compiler:2.12'
 
     implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 
     testImplementation 'junit:junit:4.13.2'
