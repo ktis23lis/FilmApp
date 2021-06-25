@@ -110,7 +110,9 @@ class FilmFragment : Fragment(R.layout.fragment_details) {
                 }
             }
         }
+
     }
+
 }
 
     class MainViewModelFactory @Inject constructor(
