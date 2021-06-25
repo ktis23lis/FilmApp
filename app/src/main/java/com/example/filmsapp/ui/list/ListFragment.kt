@@ -170,8 +170,6 @@ class ListFragment : Fragment(R.layout.fragment_lists_categories) {
 
     }
 }
-
-
 class CategoryListViewModelFactory @Inject constructor(
     private val application: Application,
     private val repository: Repository,
