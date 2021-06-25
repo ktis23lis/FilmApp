@@ -8,4 +8,5 @@
     <string name="Item_lists_TV_categories">Categories</string>
     <string name="film">Film</string>
     <string name="maindetailsfilmfragment">MainDetailsFilmFragment</string>
+    <string name="map">map</string>
 </resources>

@@ -14,7 +14,8 @@
             app:title="@string/categories_films"
             android:id="@+id/categories_toolBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            app:menu="@menu/action_bar_menu"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

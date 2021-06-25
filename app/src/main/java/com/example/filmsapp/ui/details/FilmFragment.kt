@@ -15,6 +15,7 @@ import com.example.filmsapp.databinding.FragmentDetailsBinding
 import com.example.filmsapp.di.App
 import com.example.filmsapp.domain.Film
 import com.example.filmsapp.domain.Repository
+import com.example.filmsapp.domain.RepositoryApiImpl
 import javax.inject.Inject
 
 class FilmFragment : Fragment(R.layout.fragment_details) {
@@ -86,10 +87,10 @@ class FilmFragment : Fragment(R.layout.fragment_details) {
                 with(viewBinding) {
                     retry.visibility = View.GONE
 
-                    image.apply {
-                        visibility = View.VISIBLE
-                        image.setImageResource(film.image)
-                    }
+//                    image.apply {
+//                        visibility = View.VISIBLE
+//                        image.setImageResource(film.image)
+//                    }
                     name.apply {
                         visibility = View.VISIBLE
                         name.text = film.title
@@ -109,7 +110,9 @@ class FilmFragment : Fragment(R.layout.fragment_details) {
                 }
             }
         }
+
     }
+
 }
 
     class MainViewModelFactory @Inject constructor(

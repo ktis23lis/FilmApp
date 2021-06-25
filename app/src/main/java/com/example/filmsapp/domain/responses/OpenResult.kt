@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class OpenResult(
         @SerializedName("results")
-        val results : List<OpenFilm>
+        val results : ArrayList<OpenFilm>
 )
